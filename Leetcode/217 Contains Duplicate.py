@@ -44,3 +44,45 @@ class Solution:
                     return True
         return False
 
+# Sorting 
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        nums.sort()
+        n = len(nums)
+        for i in range(1, n):
+            if nums[i] == nums[i - 1]:
+                return True
+        return False
+
+# Hash Set 
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        seen = set()
+        for num in nums:
+            if num in seen:
+                return True
+            seen.add(num)
+        return False
+
+# Hash Map 
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        seen = {}
+        for num in nums:
+            if num in seen and seen[num] >= 1:
+                return True
+            seen[num] = seen.get(num, 0) + 1
+        return False
+
+
+# Creating a set 
+# Time complexity: O(n)
+# Space complexity: O(n)
+class Solution(object):
+    def containsDuplicate(self, nums):
+        hset = set()
+        for idx in nums:
+            if idx in hset:
+                return True
+            else:
+                hset.add(idx)
